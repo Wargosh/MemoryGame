@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Inicio</title>
+</head>
+
+<body>
+    <main>
+        <section class="section__game">
+            <div class="color"></div>
+            <div class="color"></div>
+            <div class="color"></div>
+            <div class="box">
+                <div class="square" style="--i:0;"></div>
+                <div class="square" style="--i:1;"></div>
+                <div class="square" style="--i:2;"></div>
+                <div class="square" style="--i:3;"></div>
+                <div class="square" style="--i:4;"></div>
+                <div class="container">
+                    <h1>Juego de memoria</h1>
+                    <table>
+                        <tr>
+                            <td><button id="0" onclick="ShowCard(0)"></button></td>
+                            <td><button id="1" onclick="ShowCard(1)"></button></td>
+                            <td><button id="2" onclick="ShowCard(2)"></button></td>
+                            <td><button id="3" onclick="ShowCard(3)"></button></td>
+                        </tr>
+                        <tr>
+                            <td><button id="4" onclick="ShowCard(4)"></button></td>
+                            <td><button id="5" onclick="ShowCard(5)"></button></td>
+                            <td><button id="6" onclick="ShowCard(6)"></button></td>
+                            <td><button id="7" onclick="ShowCard(7)"></button></td>
+                        </tr>
+                        <tr>
+                            <td><button id="8" onclick="ShowCard(8)"></button></td>
+                            <td><button id="9" onclick="ShowCard(9)"></button></td>
+                            <td><button id="10" onclick="ShowCard(10)"></button></td>
+                            <td><button id="11" onclick="ShowCard(11)"></button></td>
+                        </tr>
+                        <tr>
+                            <td><button id="12" onclick="ShowCard(12)"></button></td>
+                            <td><button id="13" onclick="ShowCard(13)"></button></td>
+                            <td><button id="14" onclick="ShowCard(14)"></button></td>
+                            <td><button id="15" onclick="ShowCard(15)"></button></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <section class="section__info">
+            <div class="box">
+                <div class="container">
+                    <h2 id="hits" class="stats">Aciertos: 0</h2>
+                    <h2 id="timer" class="stats">Tiempo: 30s</h2>
+                    <h2 id="moves" class="stats">Movimientos: 0</h2>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>by <a href="https://wargosh.github.io/Portfolio/" target="_blank">Erick Jara</a></p>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
