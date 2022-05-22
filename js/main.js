@@ -7,7 +7,8 @@ let card1 = null,
 let firstResult = null,
   lastResult = null;
 let useTimer = false;
-let timer = 30;
+let timer = 60;
+let initialTime = 60;
 let timerId = null;
 
 let numbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
@@ -16,6 +17,10 @@ let numbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
 let showMoves = document.getElementById("moves");
 let showHits = document.getElementById("hits");
 let showTimer = document.getElementById("timer");
+let infoWinner = document.getElementById("infoWinner");
+let popup = document.querySelector(".popup__winner");
+let closePopup = document.querySelector(".close-popup");
+let showConfetti = document.querySelector("#my-canvas");
 
 // Desordenar items
 numbers = numbers.sort(() => {
@@ -101,7 +106,8 @@ function ShowHits() {
   if (hits == 8) {
     showHits.innerHTML = `Aciertos: ${hits} \n¡¡GANASTE!!`;
     clearInterval(timerId);
-    CallNewGameWithDelay();
+    ShowPopUpWinner();
+    // CallNewGameWithDelay();
   }
 }
 
@@ -126,7 +132,7 @@ function NewGame() {
 // Restablecer variables a por defecto
 function ResetInfoVars() {
   useTimer = false;
-  timer = 30;
+  timer = initialTime;
   moves = hits = 0;
 }
 
@@ -145,3 +151,21 @@ function ResetStats() {
   showMoves.innerHTML = `Movimientos: ${moves}`;
   showTimer.innerHTML = `Tiempo: ${timer}s`;
 }
+
+// Mostrar confetti
+function ShowPopUpWinner() {
+  popup.classList.add("active");
+  showConfetti.classList.add("active");
+  infoWinner.innerHTML = `Tan solo te tomó ${
+     initialTime - timer
+  } segundos.\n¡Sigue asi!`;
+}
+
+// Ocultar confetti
+closePopup.onclick = function () {
+  popup.classList.remove("active");
+  showConfetti.classList.remove("active");
+  infoWinner.innerHTML = " ";
+
+  NewGame();
+};

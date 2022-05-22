@@ -56,16 +56,32 @@
             <div class="box">
                 <div class="container">
                     <h2 id="hits" class="stats">Aciertos: 0</h2>
-                    <h2 id="timer" class="stats">Tiempo: 30s</h2>
+                    <h2 id="timer" class="stats">Tiempo: 60s</h2>
                     <h2 id="moves" class="stats">Movimientos: 0</h2>
                 </div>
             </div>
         </section>
+
+        <div class="popup__winner">
+            <h2>BIEN HECHO</h2>
+            <h4 id="infoWinner"></h4>
+            <b class="close-popup">x</b>
+        </div>
     </main>
+
     <footer>
         <p>by <a href="https://wargosh.github.io/Portfolio/" target="_blank">Erick Jara</a></p>
     </footer>
+    <canvas id="my-canvas"></canvas>
+
     <script src="js/main.js"></script>
+    <script src="js/index.min.js"></script>
+    <script>
+        // confetti lib
+        var confettiSettings = { target: 'my-canvas' };
+        var confetti = new ConfettiGenerator(confettiSettings);
+        confetti.render();
+    </script>
 </body>
 
 </html>
