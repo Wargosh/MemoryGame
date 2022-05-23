@@ -11,6 +11,13 @@ let timer = 60;
 let initialTime = 60;
 let timerId = null;
 
+// sonidos
+let winAudio = new Audio('./sounds/win-1.wav');
+let correctAudio = new Audio('./sounds/correct-1.wav');
+let errorAudio = new Audio('./sounds/error-2.wav');
+let gameoverAudio = new Audio('./sounds/gameover-1.wav');
+let selectAudio = new Audio('./sounds/select-3.wav');
+
 let numbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
 
 // Accediendo a HTML
@@ -35,14 +42,17 @@ function ShowCard(id) {
   }
 
   uncoveredCards++;
+  selectAudio.play();
 
   if (uncoveredCards == 1) {
     card1 = document.getElementById(id);
-    card1.innerHTML = firstResult = numbers[id];
+    firstResult = numbers[id];
+    card1.innerHTML = `<img src="./img/${firstResult}.png" alt="">`;
     card1.disabled = true;
   } else if (uncoveredCards == 2) {
     card2 = document.getElementById(id);
-    card2.innerHTML = lastResult = numbers[id];
+    lastResult = numbers[id];
+    card2.innerHTML = `<img src="./img/${lastResult}.png" alt="">`;
     card2.disabled = true;
 
     ShowMoves();
@@ -63,6 +73,7 @@ function Countdown() {
 
 // Se acabó el tiempo
 function GameOver() {
+  gameoverAudio.play();
   clearInterval(timerId);
   BlockCards();
   showTimer.innerHTML = `¡¡Se acabó el tiempo!!\n:(`;
@@ -74,7 +85,8 @@ function BlockCards() {
   for (let i = 0; i < numbers.length; i++) {
     let BlockCard = document.getElementById(i);
     BlockCard.disabled = true;
-    BlockCard.innerHTML = numbers[i];
+    // BlockCard.innerHTML = numbers[i];
+    BlockCard.innerHTML = `<img src="./img/${numbers[i]}.png" alt="">`;
   }
 }
 
@@ -84,6 +96,7 @@ function VerifyVictory() {
     uncoveredCards = 0;
     ShowHits();
   } else {
+    errorAudio.play();
     setTimeout(() => {
       card2.innerHTML = card1.innerHTML = " ";
       card2.disabled = card1.disabled = false;
@@ -102,6 +115,7 @@ function ShowMoves() {
 function ShowHits() {
   hits++;
   showHits.innerHTML = `Aciertos: ${hits}`;
+  correctAudio.play();
 
   if (hits == 8) {
     showHits.innerHTML = `Aciertos: ${hits} \n¡¡GANASTE!!`;
@@ -154,6 +168,7 @@ function ResetStats() {
 
 // Mostrar confetti
 function ShowPopUpWinner() {
+  winAudio.play();
   popup.classList.add("active");
   showConfetti.classList.add("active");
   infoWinner.innerHTML = `Tan solo te tomó ${
